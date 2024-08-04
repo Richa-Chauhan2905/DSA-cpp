@@ -212,7 +212,7 @@ void Deque(){
      dq.pop_back();
      PrintDeque(dq);
      dq.pop_front();
-     PrintDeque(dq);
+     PrintDeque(dq); 
     cout << dq.back() << endl;
     cout << dq.front();
 
