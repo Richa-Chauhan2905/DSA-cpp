@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-//Recursion-->function calling itself
+// Recursion-->function calling itself
 
 void f(){
     cout << 2; 
@@ -184,6 +184,7 @@ bool isPalindrome(int left, int right, const string& str){
     if(left >= right) return true;
     if(str[left] != str[right]) return false;
     isPalindrome(left + 1, right - 1, str);
+    cout << str; 
 }
 
 int main(){
