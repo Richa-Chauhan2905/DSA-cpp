@@ -1,11 +1,11 @@
 #include<iostream>
 #include<iomanip>
-#include<string>
+#include <string.h>
 using namespace std;
 
-// int c = 45;
+int c = 45;
 
-//int main() {
+// int main() {
     // int num1, num2;
     // int a = 9, b = 2;
     // cout << "Hello world\n";
@@ -20,11 +20,11 @@ using namespace std;
 
     // cout << "The sum is: " << num1 + num2;
     // return 0;
-    //}
+    // }
 
-    // There are 2 types of header files:
-    // 1. System header files: comes with the compiler
-    // 2. User defined header files: writen by the programmer
+    // // There are 2 types of header files:
+    // // 1. System header files: comes with the compiler
+    // // 2. User defined header files: writen by the programmer
 
     // int a=4, b=5;
 
@@ -40,7 +40,7 @@ using namespace std;
     // cout<<"The value of ++a is: "<<++a<<endl;
     // cout<<"The value of --a is: "<<--a<<endl;
     // return 0;
-    //}
+    // }
 
     // //Assignment Operators --> used to assign values of variables
     // int a=3, b=9;
@@ -90,7 +90,7 @@ using namespace std;
     // cout<<x<<endl;
     // cout<<y<<endl;
 
-   // // *******Typecasting******
+   // *******Typecasting******
     // float a = 45.56;
     // int b = 67;
 
@@ -264,33 +264,33 @@ while(condition){
     // cout<<"The value of *(p + 2) is "<<*(p + 2)<<endl;
     // cout<<"The value of *(p + 3) is "<<*(p + 3)<<endl;
 
-// //STRUCTURE
-    // typedef struct employee{
-    //     int ID;
-    //     char name[50];
-    //     float salary;
-    // } ep;
+// // STRUCTURE
+//     typedef struct employee{
+//         int ID;
+//         char name[50];
+//         float salary;
+//     } ep;
 
 // int main(){
-    // ep abc;
-    // abc.ID = 657484;
-    // strcpy(abc.name, "abc");
-    // abc.salary = 37839.09;
+//     ep abc;
+//     abc.ID = 657484;
+//     strcpy(abc.name, "abc");
+//     abc.salary = 37839.09;
 
-    // cout<<abc.ID<<endl<<abc.name<<endl<<abc.salary;
+//     cout<<abc.ID<<endl<<abc.name<<endl<<abc.salary;
 
-// //UNION
-    // union money{
-    //     int rice;
-    //     char car;
-    //     float pounds;
-    // };
-//int main(){
-    // union money m1;
-    // m1.rice = 34;
-    // m1.car = 'c';
-    // // cout<<m1.rice<<endl; // This will give output 99 because union can only store one value at a time and since we have written m1.car after m1.rice, it will choose the m1.car and then print it's ASCII value.
-    // cout<<m1.car;
+//UNION
+    union money{
+        int rice;
+        char car;
+        float pounds;
+    };
+int main(){
+    union money m1;
+    m1.rice = 34;
+    m1.car = 'c';
+    // cout<<m1.rice<<endl; // This will give output 99 because union can only store one value at a time and since we have written m1.car after m1.rice, it will choose the m1.car and then print it's ASCII value.
+    cout<<m1.car;
 
 // //ENUM --> assigns an integer to the names or values written in it; for the below example, breakfast=0, lunch=1 and dinner=2
 // int main(){
@@ -446,35 +446,35 @@ while(condition){
 // }
 
 
-// FUNCTION OVERLOADING
-int sum(float a, int b){
-    cout << "using function with 2 arguments" << endl;
-    return a+b;
+// // FUNCTION OVERLOADING
+// int sum(float a, int b){
+//     cout << "using function with 2 arguments" << endl;
+//     return a+b;
+// }
+
+// int sum(int a, int b, int c){
+//     cout << "using function with 3 arguments" << endl;
+//     return a+b+c;
+// }
+
+// int volume(double r, int h){
+//     return (3.14 * r * r * h);
+// }
+
+// int volume(int a){
+//     return (a * a * a);
+// }
+
+// int volume(int l, int b, int h){
+//     return (l * b * h);
 }
 
-int sum(int a, int b, int c){
-    cout << "using function with 3 arguments" << endl;
-    return a+b+c;
-}
-
-int volume(double r, int h){
-    return (3.14 * r * r * h);
-}
-
-int volume(int a){
-    return (a * a * a);
-}
-
-int volume(int l, int b, int h){
-    return (l * b * h);
-}
-
-int main(){
-    cout << "The sum of 3 and 6 is " << sum(3, 6) << endl;
-    cout << "The sum of 3, 4 and 6 is " << sum(3, 4, 6) << endl;
-    cout << "The volume of cube of side 3 is " << volume(3) << endl;
-    cout << "The volume of cuboid of length 4, breadth 5, height 6 is " << volume(4, 5, 6) << endl;
-    cout << "The volume of cylinder of radius 4.5 and height 6 is " << volume(4.5, 6) << endl;
-    return 0;
-}
+// int main(){
+//     cout << "The sum of 3 and 6 is " << sum(3, 6) << endl;
+//     cout << "The sum of 3, 4 and 6 is " << sum(3, 4, 6) << endl;
+//     cout << "The volume of cube of side 3 is " << volume(3) << endl;
+//     cout << "The volume of cuboid of length 4, breadth 5, height 6 is " << volume(4, 5, 6) << endl;
+//     cout << "The volume of cylinder of radius 4.5 and height 6 is " << volume(4.5, 6) << endl;
+//     return 0;
+// }
 

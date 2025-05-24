@@ -382,39 +382,39 @@ using namespace std;
 // }
 
 // // x using stars
-int main (){
-    int n = 5, iniS = 8;
-// upper half
-    for(int i=0; i<n; i++){
-        // stars
-        for(int j=0; j <= i; j++){
-            cout << "*";
-        }
-        //space
-        for(int j=0; j < iniS; j++){
-            cout << "-";
-        }
-        for(int j=0; j <= i; j++){
-            cout << "*";
-        }
-        iniS -= 2;
-        cout << endl;
-    }
+// int main (){
+//     int n = 5, iniS = 8;
+// // upper half
+//     for(int i=0; i<n; i++){
+//         // stars
+//         for(int j=0; j <= i; j++){
+//             cout << "*";
+//         }
+//         //space
+//         for(int j=0; j < iniS; j++){
+//             cout << "-";
+//         }
+//         for(int j=0; j <= i; j++){
+//             cout << "*";
+//         }
+//         iniS -= 2;
+//         cout << endl;
+//     }
 
-// lower half
-    for(int i=1; i<n; i++){
-        // stars
-        for(int j=0; j < n - i - 1; j++){
-            cout << "*";
-        }
-        //space
-        for(int j=1; j < iniS; j++){
-            cout << "-";
-        }
-        for(int j=0; j < n - i - 1; j++){
-            cout << "*";
-        }
-        iniS += 2;
-        cout << endl;
-    }
-}
+// // lower half
+//     for(int i=1; i<n; i++){
+//         // stars
+//         for(int j=0; j < n - i - 1; j++){
+//             cout << "*";
+//         }
+//         //space
+//         for(int j=1; j < iniS; j++){
+//             cout << "-";
+//         }
+//         for(int j=0; j < n - i - 1; j++){
+//             cout << "*";
+//         }
+//         iniS += 2;
+//         cout << endl;
+//     }
+// }

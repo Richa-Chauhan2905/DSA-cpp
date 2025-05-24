@@ -52,55 +52,70 @@ int checkArray(int arr[], int n)
     return true;
 }
 
-//remove duplicates from array
-int removeDuplicates(int arr[], int n){
+// remove duplicates from array
+int removeDuplicates(int arr[], int n)
+{
     int i = 0;
-    for(int j = 1; j < n; j++){
-        if(arr[j] != arr[i]){
-            arr[i+1] = arr[j];
+    for (int j = 1; j < n; j++)
+    {
+        if (arr[j] != arr[i])
+        {
+            arr[i + 1] = arr[j];
             i++;
         }
     }
-    return i+1;
+    return i + 1;
 }
 
-//left rotate array by one element
-void leftRotateByOne(int arr[], int n){
+// left rotate array by one element
+void leftRotateByOne(int arr[], int n)
+{
     int temp = arr[0];
-    for(int i = 1; i < n; i++){
-        arr[i - 1] = arr[i]; 
+    for (int i = 1; i < n; i++)
+    {
+        arr[i - 1] = arr[i];
     }
     arr[n - 1] = temp;
 }
 
-//rotate array by d element
-void leftRotate(int arr[], int n, int d){
+// rotate array by d element
+void leftRotate(int arr[], int n, int d)
+{
     d = d % n;
     vector<int> temp(d);
-    for(int i = 0; i < d; i++){
+    for (int i = 0; i < d; i++)
+    {
         temp[i] = arr[i];
     }
-    for(int i = d; i < n; i++){
+    for (int i = d; i < n; i++)
+    {
         arr[i - d] = arr[i];
     }
-    for(int i = 0; i < d; i++){
+    for (int i = 0; i < d; i++)
+    {
         arr[n - d + i] = temp[i];
     }
 }
 
-vector<int> moveZeroes(vector<int> &arr, int n){
+vector<int> moveZeroes(vector<int> &arr, int n)
+{
     int j = 0;
-    for(int i = 0; i < n; i++){
-        if(arr[i] == 0){
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == 0)
+        {
             j = i;
             break;
         }
     }
 
-    if(j == -1) return arr;
+    if (j == -1)
+        return arr;
 
-    for(int i = j+1; i < n; i++){
-        if(arr[i] != 0){
+    for (int i = j + 1; i < n; i++)
+    {
+        if (arr[i] != 0)
+        {
             swap(arr[i], arr[j]);
             j++;
         }
@@ -108,27 +123,140 @@ vector<int> moveZeroes(vector<int> &arr, int n){
     return arr;
 }
 
-int linearSearch(int arr[], int n, int num){
-    for(int i = 0; i < n; i++){
-        if(arr[i] == num){
+int linearSearch(int arr[], int n, int num)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == num)
+        {
             return i;
         }
     }
     return -1;
 }
 
+// brute approach
+vector<int> unionArray(vector<int> a, vector<int> b)
+{
+    int n1 = a.size();
+    int n2 = b.size();
+    set<int> st;
+    for (int i = 0; i < n1; i++)
+    {
+        st.insert(a[i]);
+    }
+    for (int i = 0; i < n2; i++)
+    {
+        st.insert(b[i]);
+    }
+    vector<int> temp;
+    for (auto it : st)
+    {
+        temp.push_back(it);
+    }
+    return temp;
+}
+
+// optimal approach
+vector<int> unionArr(vector<int> a, vector<int> b)
+{
+    int n1 = a.size();
+    int n2 = b.size();
+    int i = 0;
+    int j = 0;
+    vector<int> UnionArr;
+
+    while (i < n1 && j < n2)
+    {
+        if (a[i] <= b[j])
+        {
+            if (UnionArr.empty() || UnionArr.back() != a[i])
+            {
+                UnionArr.push_back(a[i]);
+            }
+            i++;
+        }
+        else
+        {
+            if (UnionArr.empty() || UnionArr.back() != b[j])
+            {
+                UnionArr.push_back(b[j]);
+            }
+            j++;
+        }
+    }
+    while (j < n2)
+    {
+        if (UnionArr.empty() || UnionArr.back() != b[j])
+        {
+            UnionArr.push_back(b[j]);
+        }
+        j++;
+    }
+    while (i < n1)
+    {
+        if (a[i] <= b[j])
+        {
+            if (UnionArr.empty() || UnionArr.back() != a[i])
+            {
+                UnionArr.push_back(a[i]);
+            }
+            i++;
+        }
+    }
+    return UnionArr;
+}
+
+int findMissingNumber(int arr[], int n)
+{
+    int xor1 = 0, xor2 = 0;
+
+    // XOR all elements in the array
+    for (int i = 0; i < n - 1; i++)
+    {
+        xor1 ^= arr[i];
+        xor2 ^= (i + 1);
+    }
+
+    xor2 ^= n;
+
+    return xor1 ^ xor2;
+}
+
+int maxConsecutiveOnes(vector<int> arr)
+{
+    int cnt = 0;
+    int maxi = 0;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] == 1)
+        {
+            cnt++;
+            maxi = max(maxi, cnt);
+        }
+        else
+        {
+            cnt = 0;
+        }
+    }
+    return maxi;
+}
+
 int main()
 {
-    int x;
-    cout << "Enter the number of elements in your array: ";
-    cin >> x;
+    // int x;
+    // cout << "Enter the number of elements in your array: ";
+    // cin >> x;
 
-    int arr[x];
-    for (int i = 0; i < x; i++)
-    {
-        cout << "Enter element " << i << ": ";
-        cin >> arr[i];
-    }
+    // int arr[x];
+    // for (int i = 0; i < x; i++)
+    // {
+    //     cout << "Enter element " << i << ": ";
+    //     cin >> arr[i];
+    // }
+
+    // vector<int> a = {1, 2, 3, 5, 5, 6};
+    // vector<int> b = {1, 2, 2, 4, 5, 7, 8, 8};
 
     // int y;
     // cout << "Enter the number of elements in your array: ";
@@ -183,7 +311,7 @@ int main()
     //     cout << arr[i] << " ";
     // }
     // cout << endl;
-    
+
     // moveZeroes(arr1, y);
     // cout << "Array after moving zeroes at the end: ";
     // for(int i = 0; i < y; i++){
@@ -191,12 +319,40 @@ int main()
     // }
     // cout << endl;
 
-    int k;
-    cout << "Enter the element you want to know the index of: ";
-    cin >> k;
-    int index = linearSearch(arr, x, k);
-    cout << "The index of the element is: " << index;
+    // int k;
+    // cout << "Enter the element you want to know the index of: ";
+    // cin >> k;
+    // int index = linearSearch(arr, x, k);
+    // cout << "The index of the element is: " << index;
 
-    
-    return 0;
+    // vector<int> result = unionArray(a, b);
+
+    // cout << "Union of Arrays: ";
+    // for (int num : result)
+    // {
+    //     cout << num << " ";
+    // }
+    // cout << endl;
+
+    // vector<int> result = unionArr(a, b);
+
+    // cout << "Union of Arrays: ";
+    // for (int num : result)
+    // {
+    //     cout << num << " ";
+    // }
+    // cout << endl;
+
+    // int arr[] = {1, 2, 4, 5, 6}; // Missing number is 3
+    // int n = sizeof(arr) / sizeof(arr[0]);
+
+    // cout << "Missing number: " << findMissingNumber(arr, n) << endl;
+
+    // return 0;
+
+    vector<int> arr1 = {1, 2, 4, 6, 1, 1, 1, 1, 2, 3, 5, 6};
+    int n = sizeof(arr1);
+
+    int result = maxConsecutiveOnes(arr1);
+    cout << result;
 }

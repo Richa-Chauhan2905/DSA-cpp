@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
-// #include<iostream>
-// #include<vector>
-// #include<list>
-// #include<map>
-// #include<string.h>
-// #include<functional>
-// #include<algorithm>
+#include<iostream>
+#include<vector>
+#include<list>
+#include<map>
+#include<string.h>
+#include<functional>
+#include<algorithm>
 
 // STL ---> Standard Template Library
 // STL = Containers + Algorithm + Iterators
@@ -50,7 +50,7 @@ void display(vector<T> &v){
 
 int main(){
 // ways to create a vector
-    vector<int> vec1; //zero lenghth integer vector
+    vector<int> vec1; //zero length integer vector
     int element, size = 5;
 
     cout << "Enter size of your vector: ";
