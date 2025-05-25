@@ -1,9 +1,10 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
+#include <vector>
+#include <set>
 using namespace std;
 
 // largest element in an array
-int largestElement(int array[], int n)
+int largestElement(vector <int> &array, int n)
 {
     int largest = array[0];
 
@@ -19,7 +20,7 @@ int largestElement(int array[], int n)
 }
 
 // Second largest element in an array
-int secondLargestElement(int array[], int n)
+int secondLargestElement(vector <int> &array, int n)
 {
     int largest = array[0];
     int secondlargest = -1;
@@ -40,7 +41,7 @@ int secondLargestElement(int array[], int n)
 }
 
 // Check if array is sorted
-int checkArray(int arr[], int n)
+int checkArray(vector <int> &arr, int n)
 {
     for (int i = 1; i < n; i++)
     {
@@ -53,7 +54,7 @@ int checkArray(int arr[], int n)
 }
 
 // remove duplicates from array
-int removeDuplicates(int arr[], int n)
+int removeDuplicates(vector <int> &arr, int n)
 {
     int i = 0;
     for (int j = 1; j < n; j++)
@@ -68,7 +69,7 @@ int removeDuplicates(int arr[], int n)
 }
 
 // left rotate array by one element
-void leftRotateByOne(int arr[], int n)
+void leftRotateByOne(vector <int> &arr, int n)
 {
     int temp = arr[0];
     for (int i = 1; i < n; i++)
@@ -79,7 +80,7 @@ void leftRotateByOne(int arr[], int n)
 }
 
 // rotate array by d element
-void leftRotate(int arr[], int n, int d)
+void leftRotate(vector <int> &arr, int n, int d)
 {
     d = d % n;
     vector<int> temp(d);
@@ -123,7 +124,7 @@ vector<int> moveZeroes(vector<int> &arr, int n)
     return arr;
 }
 
-int linearSearch(int arr[], int n, int num)
+int linearSearch(vector<int> &arr, int n, int num)
 {
     for (int i = 0; i < n; i++)
     {
@@ -207,7 +208,7 @@ vector<int> unionArr(vector<int> a, vector<int> b)
     return UnionArr;
 }
 
-int findMissingNumber(int arr[], int n)
+int findMissingNumber(vector<int> &arr, int n)
 {
     int xor1 = 0, xor2 = 0;
 
@@ -242,117 +243,154 @@ int maxConsecutiveOnes(vector<int> arr)
     return maxi;
 }
 
+int numAppearOnce(vector<int> arr, int n){
+    int xorr = 0;
+    for(int i = 0; i < n; i++){
+        xorr ^= arr[i];
+    }
+    return xorr;
+}
+
+int longestSubarrayWithSumK(vector<int> arr, long long k){
+    int left = 0, right = 0;
+    long long sum = arr[0];
+    int maxLen = 0;
+    int n = arr.size();
+
+    while(right < n){
+        while(left <= right && sum > k){
+            sum -= arr[left];
+            left++;
+        }
+        if(sum == k){
+            maxLen = max(maxLen, right - left + 1);
+        }
+        right++;
+        if(right < n) sum+= arr[right];
+    }
+    return maxLen;
+}
+
 int main()
 {
-    // int x;
-    // cout << "Enter the number of elements in your array: ";
-    // cin >> x;
+    int x;
+    cout << "Enter the number of elements in your array: ";
+    cin >> x;
 
-    // int arr[x];
-    // for (int i = 0; i < x; i++)
-    // {
-    //     cout << "Enter element " << i << ": ";
-    //     cin >> arr[i];
-    // }
+    vector<int> arr(x);
+    for (int i = 0; i < x; i++)
+    {
+        cout << "Enter element " << i << ": ";
+        cin >> arr[i];
+    }
 
-    // vector<int> a = {1, 2, 3, 5, 5, 6};
-    // vector<int> b = {1, 2, 2, 4, 5, 7, 8, 8};
+    vector<int> a = {1, 2, 3, 5, 5, 6};
+    vector<int> b = {1, 2, 2, 4, 5, 7, 8, 8};
 
-    // int y;
-    // cout << "Enter the number of elements in your array: ";
-    // cin >> y;
+    int y;
+    cout << "Enter the number of elements in your array: ";
+    cin >> y;
 
-    // vector<int> arr1(y);
-    // for(int i = 0; i < y; i++){
-    //     cout << "Enter element " << i << ": ";
-    //     cin >> arr1[i];
-    // }
+    vector<int> arr1(y);
+    for(int i = 0; i < y; i++){
+        cout << "Enter element " << i << ": ";
+        cin >> arr1[i];
+    }
 
-    // cout << "The largest element in your array is: ";
-    // largestElement(arr, x);
-    // cout << endl;
+    cout << "The largest element in your array is: ";
+    largestElement(arr, x);
+    cout << endl;
 
-    // cout << "The second largest element in your array is: ";
-    // secondLargestElement(arr, x);
-    // cout << endl;
+    cout << "The second largest element in your array is: ";
+    secondLargestElement(arr, x);
+    cout << endl;
 
-    // if (checkArray(arr, x))
-    // {
-    //     cout << "The array is sorted" << endl;
-    // }
-    // else
-    // {
-    //     cout << "The array is not sorted" << endl;
-    // }
+    if (checkArray(arr, x))
+    {
+        cout << "The array is sorted" << endl;
+    }
+    else
+    {
+        cout << "The array is not sorted" << endl;
+    }
 
-    // int uniqueCount = removeDuplicates(arr, x); // Store the new length
+    int uniqueCount = removeDuplicates(arr, x); // Store the new length
 
-    // cout << "The unique elements of the array are: ";
-    // for (int i = 0; i < uniqueCount; i++) {
-    //     cout << arr[i] << " ";
-    // }
-    // cout << endl;
+    cout << "The unique elements of the array are: ";
+    for (int i = 0; i < uniqueCount; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
-    // leftRotateByOne(arr, x);
+    leftRotateByOne(arr, x);
 
-    // cout << "The array after rotating it to left: ";
-    // for(int i = 0; i < x; i++){
-    //     cout << arr[i] << " ";
-    // }
-    // cout << endl;
+    cout << "The array after rotating it to left: ";
+    for(int i = 0; i < x; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
-    // int d;
-    // cout << "Enter elements by which you want to rotate: ";
-    // cin >> d;
-    // leftRotate(arr, x, d);
+    int d;
+    cout << "Enter elements by which you want to rotate: ";
+    cin >> d;
+    leftRotate(arr, x, d);
 
-    // cout << "The array after rotating it to left by " << d << " elements : ";
-    // for(int i = 0; i < x; i++){
-    //     cout << arr[i] << " ";
-    // }
-    // cout << endl;
+    cout << "The array after rotating it to left by " << d << " elements : ";
+    for(int i = 0; i < x; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
-    // moveZeroes(arr1, y);
-    // cout << "Array after moving zeroes at the end: ";
-    // for(int i = 0; i < y; i++){
-    //     cout << arr1[i] << " ";
-    // }
-    // cout << endl;
+    moveZeroes(arr1, y);
+    cout << "Array after moving zeroes at the end: ";
+    for(int i = 0; i < y; i++){
+        cout << arr1[i] << " ";
+    }
+    cout << endl;
 
-    // int k;
-    // cout << "Enter the element you want to know the index of: ";
-    // cin >> k;
-    // int index = linearSearch(arr, x, k);
-    // cout << "The index of the element is: " << index;
+    int k;
+    cout << "Enter the element you want to know the index of: ";
+    cin >> k;
+    int index = linearSearch(arr, x, k);
+    cout << "The index of the element is: " << index;
 
-    // vector<int> result = unionArray(a, b);
+    vector<int> result = unionArray(a, b);
 
-    // cout << "Union of Arrays: ";
-    // for (int num : result)
-    // {
-    //     cout << num << " ";
-    // }
-    // cout << endl;
+    cout << "Union of Arrays: ";
+    for (int num : result)
+    {
+        cout << num << " ";
+    }
+    cout << endl;
 
-    // vector<int> result = unionArr(a, b);
+    vector<int> result = unionArr(a, b);
 
-    // cout << "Union of Arrays: ";
-    // for (int num : result)
-    // {
-    //     cout << num << " ";
-    // }
-    // cout << endl;
+    cout << "Union of Arrays: ";
+    for (int num : result)
+    {
+        cout << num << " ";
+    }
+    cout << endl;
 
-    // int arr[] = {1, 2, 4, 5, 6}; // Missing number is 3
-    // int n = sizeof(arr) / sizeof(arr[0]);
+    int arr[] = {1, 2, 4, 5, 6}; // Missing number is 3
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    // cout << "Missing number: " << findMissingNumber(arr, n) << endl;
-
-    // return 0;
+    cout << "Missing number: " << findMissingNumber(arr, n) << endl;
 
     vector<int> arr1 = {1, 2, 4, 6, 1, 1, 1, 1, 2, 3, 5, 6};
-    int n = sizeof(arr1);
+    int n = arr1.size();
+    
+    cout << maxConsecutiveOnes(arr1);
 
-    int result = maxConsecutiveOnes(arr1);
-    cout << result;
+    vector<int> arr = {1, 1, 2, 2, 3, 4, 4, 5, 5};
+    vector<int> arr1 = {1, 1, 2, 3, 3, 4, 4, 5, 5};
+    int n = arr.size();
+    
+    cout << numAppearOnce(arr, n);
+    cout << numAppearOnce(arr1, n);
+
+    vector<int> arr = {1, 2, 3};
+    cout << longestSubarrayWithSumK(arr, 3);
+
+    return 0;
 }
