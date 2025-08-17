@@ -136,3 +136,80 @@ vector<int> searchRange(vector<int> &nums, int target)
         return {-1, -1};
     return {lb, upperBound(nums, target) - 1};
 }
+
+//first and last occurrence without using lowerBound and upperBound
+int firstOccurrence(vector<int> &arr, int target)
+{
+    int low = 0, high = arr.size() - 1;
+    int ans = -1;
+
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+        if (arr[mid] == target)
+        {
+            ans = mid;
+            high = mid - 1;
+        }
+        else if (arr[mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+    return ans;
+}
+
+int lastOccurrence(vector<int> &arr, int target)
+{
+    int low = 0, high = arr.size() - 1;
+    int ans = -1;
+
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+        if (arr[mid] == target)
+        {
+            ans = mid;
+            low = mid + 1;
+        }
+        else if (arr[mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+    return ans;
+}
+
+pair<int, int> firstAndLastOccurence(vector<int> &arr, int target){
+    int first = firstOccurrence(arr, target);
+    if (first == -1) return {-1, -1};
+    int last = lastOccurrence(arr, target);
+    return {first, last};
+}
+
+int main()
+{
+    vector<int> arr = {1, 2, 4, 4, 5, 7, 9};
+    int target;
+
+    cout << "Enter the number to find first and last occurrence: ";
+    cin >> target;
+
+    pair<int, int> result = firstAndLastOccurence(arr, target);
+
+    if (result.first != -1)
+        cout << "First occurrence of " << target << " is at index " << result.first
+             << " and last occurrence is at index " << result.second << endl;
+    else
+        cout << target << " not found in the array." << endl;
+
+    return 0;
+}
